@@ -13,7 +13,7 @@ function myFunction() {
   }
   nestedFunction();
 }
-//myFunction();
+
 
 //🚀🚀🚀 ⬇️ 📝 Explanation ⬇️ 📝 🚀🚀🚀: 
 
@@ -30,12 +30,11 @@ function myFunction() {
 💡 NOTE: you may use a for loop for this function if you wish 
 */
 
-function summation(number) {
-  let total = 0;
-  for (let i = 1; i < number; i++){
-    total[i] + 1;
-  };
-  return total;
+function summation(number){
+ let array = Array.from({length:number},
+  (x,i) => i+1);
+  return array.reduce((a, b) => a + b)
+  
   }
  console.log(summation(4));
 
@@ -64,12 +63,16 @@ const zooAnimals = [
   */
 
   function animalNames(array){
-    const names = array.map(string => {
-      return array.animal_name;
-  })
-}
+    const newArray = [];
+   array.forEach(function(element){
+   element.name = `name: ${element.animal_name}, scientific: ${element.scientific_name}`
+   newArray.push(element.name)
+   });
+   return newArray
+  }
 
-  console.log(animalNames(zooAnimals))
+
+
   
 
   /* 🦁🦁🦁 Request 2: .map() 🦁🦁🦁
@@ -82,9 +85,13 @@ const zooAnimals = [
   💡 NOTE: Do some research for other methods that can help help you
   */
 
-  function lowerCaseNames(array){
-  }
-  
+  function lowerCaseNames(arr){ 
+    let mappedarr = arr.map((element) => {
+      return element.animal_name.toLowerCase();  
+    });
+    return mappedarr
+    }
+
   
   /* 🦁🦁🦁 Request 3: .filter() 🦁🦁🦁
   The zoo is concerned about animals with a lower population count. 
@@ -94,8 +101,11 @@ const zooAnimals = [
   3. Return this new array
   */
 
-  function lowPopulationAnimals(/*Your Code Here*/){
-    /*Your Code Here*/
+  function lowPopulationAnimals(arr){
+    const lowpop = arr.filter((item) => 
+    {return item.population < 5
+    });
+    return lowpop
   }
   
 
@@ -107,8 +117,14 @@ const zooAnimals = [
   3. Return the total population
   💡 NOTE: Remember the reduce method takes two arguments: a callback (which itself takes two args - the accumulator and the item), and an initial value for the count. Check MDN/W3Schools for syntax!
   */
-function USApop(){
+function USApop(array){
+const pop = array.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue.population;
+}, 0);
+return pop
 }
+
+
  
   
   // 🦁🦁🦁 Callbacks 🦁🦁🦁  
@@ -120,9 +136,9 @@ function USApop(){
     💡 NOTE: The tests for 'consume' will pass if it is created correctly and also after you correctly complete the functions 'add' and 'greeting' below in Step 2.
   */
 
-  function consume(a, c, cb){
-  }  
- 
+  function consume(a, b, cb){
+   return cb(a,b);
+  }
   
   // 🦁🦁🦁 Step 2: Create several functions to callback with consume(); 🦁🦁🦁
 
@@ -131,8 +147,8 @@ function USApop(){
  2. Return the sum of those numbers
  */
 
-function add(num1, num2){
- return num1 + num2;
+function add(a, b){
+ return a + b;
 }
 
 /* Use multiply to do the following:
@@ -140,8 +156,8 @@ function add(num1, num2){
 2. Return the product of those numbers
 */
 
-function multiply(num1, num2){
-  return num1 * num2
+function multiply(a, b){
+  return a * b;
   }
 
 
@@ -152,7 +168,7 @@ function multiply(num1, num2){
 */
 
 function greeting(firstName, lastName){
-   return (`Hello ${firstName} ${lastName}, nice to meet you!`)
+   return ("Hello "  +firstName+" "+lastName+", nice to meet you!")
    }
   
   
@@ -236,6 +252,14 @@ class CuboidMakerTwo{
   this.length = cubeAttrs.length;
   this.width = cubeAttrs.width;
   this.height = cubeAttrs.height;
+}
+volume(){
+  let vlm = this.width * this.length * this.height;
+  return vlm;
+}
+surfaceArea(){
+  let surface = this.length * this.width + this.length * this.height + this.width * this.height;
+  return surface * 2;
 }
 }
 
