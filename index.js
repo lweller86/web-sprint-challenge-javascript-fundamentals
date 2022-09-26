@@ -53,6 +53,7 @@ const zooAnimals = [
     { animal_name: "Hawk-eagle, crowned", population: 10, scientific_name: "Spizaetus coronatus", state: "Florida" },
     { animal_name: "Australian pelican", population: 5, scientific_name: "Pelecanus conspicillatus", state: "West Virginia" },
   ];
+ 
   
   /* 🦁🦁🦁 Request 1: .forEach() 🦁🦁🦁
   The zoos want to display both the scientific name and the animal name in front of the habitats. 
@@ -65,8 +66,9 @@ const zooAnimals = [
   function animalNames(array){
     const newArray = [];
    array.forEach(function(element){
-   element.name = `name: ${element.animal_name}, scientific: ${element.scientific_name}`
-   newArray.push(element.name)
+   element = `name: ${element.animal_name}, scientific: ${element.scientific_name}`
+   newArray.push(element)
+console.log(array)
    });
    return newArray
   }
@@ -91,7 +93,7 @@ const zooAnimals = [
     });
     return mappedarr
     }
-
+console.log(lowerCaseNames(zooAnimals))
   
   /* 🦁🦁🦁 Request 3: .filter() 🦁🦁🦁
   The zoo is concerned about animals with a lower population count. 
@@ -102,11 +104,10 @@ const zooAnimals = [
   */
 
   function lowPopulationAnimals(arr){
-    const lowpop = arr.filter((item) => 
-    {return item.population < 5
-    });
-    return lowpop
+    return arr.filter(e => e.population < 5)
+    
   }
+console.log(lowPopulationAnimals(zooAnimals))
   
 
   /* 🦁🦁🦁 Request 4: .reduce() 🦁🦁🦁
